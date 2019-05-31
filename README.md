@@ -1,4 +1,61 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Notes To Keep In Mind
+
+Modern websites ship a lot of javascript
+	-Normally, Bundle scripts into 1 large file then serves through different pages
+
+Code Splitting:
+	-Reduce amount of work
+	-A minimally functional page the about page
+	-Create a vendor file: A file with all our third-party scripts
+	
+Production Build:
+	-A file that is minified and remove tools that comes with third party
+	apps
+	-npm run build and will remove production
+
+Bundle.js - Is where are components are held and longest time to load.
+	-All the javascript we need is in bundle.js
+
+By using the 'import' keyword we are already telling webpack to use this component
+when it is needed
+
+In the network tab upon switching pages you will see javascript files being loaded
+named as "chunk". These files are sent only when needed by the webpage.
+
+A higher order component is a component that returns a component
+	-Similar to a higher order function
+	-Similar to connect() -> in redux
+
+Our bundle.js file increases because we are importing "AsyncComponent"
+Always question if it is neccessary to load asynchronously.
+
+Route based chunking
+	Main way of doing things.
+Component based chunking
+	-If home page gets really big.
+	-Maybe you have a sidebar that exists then pops up
+	
+React-Router and React-Loadable, makes it really easy to do code
+splitting.
+
+PureComponent: Only will re-render when its props wil change;
+	-Will do the shouldcomponent update
+	-Does shallow checks.
+
+Git-Why-Did-You-Update?
+	-Checking for any unessary rendering
+
+How do we optimize our code?
+	-Code splitting
+	-Tree shaking -> done behind the scenes by webpack, removes any unused code
+	-If we are using only one function in a big library we will discard the rest
+	-Avoid blocking the main thread
+		-Minimizing how much js is being included
+	-Avoiding memory leaks
+		-We don't keep adding memory to our app	
+		-We have a ton of eventlisteners, the browsers will do more things due
+		to these eventlisteners.
 
 ## Available Scripts
 
